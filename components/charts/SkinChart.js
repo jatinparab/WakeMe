@@ -9,7 +9,7 @@ class Chart extends Component {
     constructor(props){
         super(props);
         this.state = { 
-            chartData: [ 65, 70, 67, 65, 66, 74, 75, 71, 75, 73, 73, 74, 70, 70, 70 ]
+            chartData: [ 0.95, 0.99, 0.85, 0.69, 0.89, 0.99, 0.4, 0.47, 0.87, 0.91, 0.95, 1.01, 0.90, 0.97, 1.00 ]
         };
     }
 
@@ -20,11 +20,11 @@ class Chart extends Component {
     componentDidMount(){
       // Toggle the state every second
       
-      setInterval(() => (
-        this.setState(previousState => (
-          { chartData: [...previousState.chartData.slice(1,16), this.randomInt(65,75)] }
-        ))
-      ), 5000); 
+    //   setInterval(() => (
+    //     this.setState(previousState => (
+    //       { chartData: [...previousState.chartData.slice(1,16), this.randomInt(65,75)] }
+    //     ))
+    //   ), 5000); 
       
     }
   
@@ -52,11 +52,11 @@ class Chart extends Component {
 
         const Tooltip = ({ x, y }) => (
             <G
-                x={ x(5) - (75 / 2) }
+                x={ x(12) }
                 key={ 'tooltip' }
                 onPress={ () => console.log('tooltip clicked') }
             >
-                <G y={ 50 }>
+                <G y={ 80 }>
                     <Rect
                         height={ 40 }
                         width={ 75 }
@@ -72,14 +72,14 @@ class Chart extends Component {
                         textAnchor={ 'middle' }
                         stroke={ 'rgb(134, 65, 244)' }
                     >
-                        { `${data[13]}C` }
+                        { `${data[13]} μS` }
                     </Text>
                 </G>
                 <G x={ 75 / 2 }>
                     
                     <Circle
                         cy={ y(data[ 13 ]) }
-                        r={ 7 }
+                        r={ 9 }
                         stroke={ 'rgb(134, 65, 244)' }
                         strokeWidth={ 2 }
                         fill={ 'white' }
@@ -97,8 +97,8 @@ class Chart extends Component {
                     stroke: 'rgb(134, 65, 244)',
                     strokeWidth: 2,
                 }}
-                yMin={0}
-                yMax={70}
+                // yMin={0}
+                // yMax={70}
                 contentInset={{ top: 20, bottom: 20 }}
                 curve={ shape.curveLinear }
             >
@@ -107,7 +107,7 @@ class Chart extends Component {
                 <Tooltip/>
 
             </LineChart>
-            <ReactText style={{color:'white', fontSize:35}}> Current Skin Conductance: {this.state.chartData.slice(-2,-1)} </ReactText>
+            <ReactText style={{color:'white', fontSize:30}}> Current Skin Conductance: {this.state.chartData.slice(-2,-1)} μS  </ReactText>
 
             </View>
         )

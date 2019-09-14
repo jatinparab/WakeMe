@@ -10,7 +10,7 @@ class Chart extends Component {
     constructor(props){
         super(props);
         this.state = { 
-            chartData: [ 65, 70, 67, 65, 66, 74, 75, 71, 75, 73, 73, 74, 70, 70, 70 ]
+            chartData: [ 81, 68, 74, 70, 76, 83, 60, 62, 74, 78, 81, 86, 77, 83, 85 ]
         };
     }
 
@@ -21,11 +21,11 @@ class Chart extends Component {
     componentDidMount(){
       // Toggle the state every second
       
-      setInterval(() => (
-        this.setState(previousState => (
-          { chartData: [...previousState.chartData.slice(1,16), this.randomInt(65,75)] }
-        ))
-      ), 2000); 
+    //   setInterval(() => (
+    //     this.setState(previousState => (
+    //       { chartData: [...previousState.chartData.slice(1,16), this.randomInt(65,75)] }
+    //     ))
+    //   ), 2000); 
       
     }
   
@@ -57,7 +57,7 @@ class Chart extends Component {
                     <Grid/>
                     <Line/>
                 </AreaChart>
-                <Text style={{color:'white', fontSize:40}}> Current Heart Rate: {this.state.chartData.slice(-2,-1)} </Text>
+                <Text style={{color:'white', fontSize:35}}> Current Heart Rate: {this.state.chartData.slice(-2,-1)} BPM </Text>
             </View>
             
         )
