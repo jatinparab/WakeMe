@@ -9,10 +9,24 @@ class Chart extends Component {
     constructor(props){
         super(props);
         this.state = { 
-            chartData: [ 0.95, 0.99, 0.85, 0.69, 0.89, 0.99, 0.4, 0.47, 0.87, 0.91, 0.95, 1.01, 0.90, 0.97, 1.00 ]
+            // chartData: [ 0.95, 0.99, 0.85, 0.69, 0.89, 0.99, 0.4, 0.47, 0.87, 0.91, 0.95, 1.01, 0.90, 0.97, 1.00 ]
+            chartData: this.shuffle([ 0.4, 0.69, 0.45, 0.89, 0.89, 0.39, 0.48, 0.47, 0.97, 0.81, 0.75, 1.01, 1.3, 1.27, 0.50 ])
+
         };
     }
 
+    shuffle(arr){
+        var i,
+        j,
+        temp;
+        for (i = arr.length - 1; i > 0; i--) {
+            j = Math.floor(Math.random() * (i + 1));
+            temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
+        return arr;
+    }
     randomInt(min, max){
         return Math.floor(Math.random() * (max - min + 1)) + min;
      }
