@@ -3,6 +3,7 @@ import { Text, View } from 'react-native'
 import { Path } from 'react-native-svg'
 import { AreaChart, Grid } from 'react-native-svg-charts'
 import * as shape from 'd3-shape'
+import socket from '../../services/socket-client'
 
 
 class Chart extends Component {
@@ -12,6 +13,12 @@ class Chart extends Component {
         this.state = { 
             chartData: this.shuffle([ 81, 68, 74, 70, 76, 83, 60, 62, 74, 78, 81, 86, 77, 83, 85 ]) 
         };
+
+        socket.on('ev', (d) => {
+            console.log(d);
+            this.setState({data: d, chartData: [...this.state.chartData, d]})
+
+        })
     }
 
     shuffle(arr){
@@ -70,7 +77,7 @@ class Chart extends Component {
                     <Grid/>
                     <Line/>
                 </AreaChart>
-                <Text style={{color:'white', fontSize:35}}> Current Heart Rate: {this.state.chartData.slice(-2,-1)} BPM </Text>
+                <Text style={{color:'white', fontSize:35}}> Current Heart Rate: {this.state.data} BPM </Text>
             </View>
             
         )
