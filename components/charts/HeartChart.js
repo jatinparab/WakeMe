@@ -14,11 +14,19 @@ class Chart extends Component {
             chartData: this.shuffle([ 81, 68, 74, 70, 76, 83, 60, 62, 74, 78, 81, 86, 77, 83, 85 ]) 
         };
 
-        socket.on('ev', (d) => {
+        socket.on('sensor', (d) => {
             console.log(d);
-            this.setState({data: d, chartData: [...this.state.chartData, d]})
 
+            this.setState(previousState =>({
+                chartData: [...previousState.chartData.slice(1,15), this.stringToJSON(d).BPM],
+                data: this.stringToJSON(d).BPM
+            }));
+            //this.setState({data: d, chartData: [...this.state.chartData, d]})
         })
+    }
+
+    stringToJSON(string){
+        return JSON.parse(string)
     }
 
     shuffle(arr){

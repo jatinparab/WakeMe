@@ -1,6 +1,6 @@
 const io = require('socket.io-client');
 
-var socket = io('ws://192.168.3.209:3000/', {
+var socket = io('ws://192.168.3.105:3000/', {
     transports: ['websocket'],
   });
  
