@@ -13,6 +13,7 @@ import {
 import { MonoText } from '../components/StyledText';
 import HeartChart  from '../components/charts/HeartChart';
 import SkinChart  from '../components/charts/SkinChart';
+import LiveStream from '../components/streamer/LiveStream';
 
 export default function HomeScreen() {
   return (
@@ -22,6 +23,7 @@ export default function HomeScreen() {
       <SkinChart></SkinChart>
       </View>
       <View style={styles.bottomContainer}>
+      <LiveStream/>
       </View>
     </View>
   );
